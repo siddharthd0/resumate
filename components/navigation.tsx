@@ -10,9 +10,18 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
   return (
-    <Flex align="center" justify="space-between" wrap="wrap" padding={6}>
-      <Box mt="10px">
-        <Heading size="lg">Resume Builder</Heading>
+    <Flex
+      alignItems={"center !important"}
+      px="30px"
+      py="14px"
+      color="brand.900"
+      backgroundColor={"brand.700"}
+      align="center"
+      justify="space-between"
+      wrap="wrap"
+    >
+      <Box display={"flex"} alignItems={"center !important"}>
+        <Heading fontSize="2xl">Resume Builder</Heading>
       </Box>
       <Spacer />
       <Box display={{ base: "block", md: "none" }}>
@@ -24,7 +33,6 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
         />
       </Box>
       <Box
-        mt="-14px"
         display={{ base: isOpen ? "block" : "none", md: "flex" }}
         width={{ base: "full", md: "auto" }}
         alignItems="center"
