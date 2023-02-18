@@ -36,7 +36,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
-      <Box  background={"https://static.vecteezy.com/system/resources/previews/010/825/735/non_2x/dark-background-random-minimalist-abstract-illustration-for-logo-card-banner-web-and-printing-free-vector.jpg"}>
+      <Box>
         <Box  height={"100vh"} display={"flex"} justifyContent={"center"}>
           <Box
           pt="52"
