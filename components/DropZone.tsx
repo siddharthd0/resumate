@@ -13,6 +13,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "@firebase/storage";
+import FeedbackHero  from "./feedbackHero";
 
 const DropZone = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -56,6 +57,7 @@ const DropZone = () => {
 
   return (
     <>
+    <FeedbackHero />
       <chakra.div minH="100vh">
         <div {...getRootProps()} className={classes.dropzone}>
           <input {...getInputProps()} />
@@ -84,7 +86,7 @@ const DropZone = () => {
         >
           Upload
         </chakra.button>
-        
+      </chakra.div>
     </>
   );
 };

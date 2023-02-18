@@ -13,8 +13,16 @@ import {
 } from "@chakra-ui/react";
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
-import jsPDF from "jspdf";
-import html2pdf from "html2pdf.js";
+// import jsPDF from "jspdf";
+import {
+  pdf,
+  PDFDownloadLink,
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+} from "@react-pdf/renderer";
 
 const ResumeGenerator = () => {
   const [markdown, setMarkdown] = useState("# Heading\n\nSome text");
@@ -43,52 +51,46 @@ const ResumeGenerator = () => {
     return { __html: `<style>${css}</style>` };
   };
 
-  // const handleSaveAsPDF = () => {
-  //   if (!previewRef.current) return;
-  //   const pdf = new jsPDF();
-  //   const previewElement = previewRef.current;
-  
-  //   // Create a new element with the same content as the preview element
-  //   const contentElement = document.createElement("div");
-  //   contentElement.innerHTML = previewElement.innerHTML;
-  
-  //   // Apply the CSS styles to the new element
-  //   const styleElement = document.createElement("style");
-  //   styleElement.innerHTML = css;
-  //   contentElement.prepend(styleElement);
-  
-  //   // Generate the PDF from the new element
-  //   pdf.html(contentElement, {
-  //     callback: function () {
-  //       pdf.save("resume.pdf");
-  //     },
-  //   });
-  // };
   const handleSaveAsPDF = () => {
     if (!previewRef.current) return;
-    const previewElement = previewRef.current;
 
-    // Create a new element with the same content as the preview element
-    const contentElement = document.createElement("div");
-    contentElement.innerHTML = previewElement.innerHTML;
+    const content = previewRef.current.innerHTML;
 
-    // Apply the CSS styles to the new element
-    const styleElement = document.createElement("style");
-    styleElement.innerHTML = css;
-    contentElement.prepend(styleElement);
+    // Define styles for the PDF document
+    const styles = StyleSheet.create({
+      page: {
+        flexDirection: "row",
+        backgroundColor: "#E4E4E4",
+      },
+      section: {
+        margin: 10,
+        padding: 10,
+        flexGrow: 1,
+      },
+      text: {
+        color: "black",
+      },
+    });
 
-    // Generate the PDF from the new element using html2pdf
-    const pdfOptions = {
-      margin: 1,
-      filename: "resume.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-    };
+    // Define the document structure
+    const MyDocument = () => (
+      <Document>
+        <Page size="A4" style={styles.page}>
+          <View style={styles.section}>
+            <Text style={styles.text}>{content}</Text>
+          </View>
+        </Page>
+      </Document>
+    );
 
-    html2pdf().set(pdfOptions).from(contentElement).save();
+    // Generate the PDF from the document
+    pdf(<MyDocument />)
+      .toBlob()
+      .then((pdfBlob) => {
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        window.open(pdfUrl);
+      });
   };
-  
 
   return (
     <>
