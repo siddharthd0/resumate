@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Box, Spacer, Heading, Link, IconButton } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-
+import { motion } from "framer-motion";
 interface NavigationProps {
   onOpen: () => void;
   onClose: () => void;
@@ -9,11 +9,24 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
+  const navVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1.4, delay: 1.6 } },
+  };
+
+  const menuItemVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
   return (
     <Flex
+      as={motion.nav}
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
       alignItems={"center !important"}
-      px="30px"
-      py="14px"
+      px="60px"
+      py="18px"
       color="brand.900"
       backgroundColor={"brand.700"}
       align="center"
@@ -21,7 +34,9 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
       wrap="wrap"
     >
       <Box display={"flex"} alignItems={"center !important"}>
-        <Heading className="logo" fontSize="2xl">Resumate</Heading>
+        <Heading className="logo" fontSize="2xl">
+          Resumate
+        </Heading>
       </Box>
       <Spacer />
       <Box display={{ base: "block", md: "none" }}>

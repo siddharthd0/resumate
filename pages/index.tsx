@@ -9,28 +9,50 @@ import {
   Text,
   Flex,
   Stack,
-  Image, 
+  Image,
+  Spacer,
   chakra,
-  shouldForwardProp
+  shouldForwardProp,
 } from "@chakra-ui/react";
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
 import React from "react";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
 
 const Home: NextPage = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
+  useEffect(() => {
+  AOS.init();
+  AOS.refresh();
+}, []);
 
   return (
     <>
       <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
-      <Box backgroundColor={"brand.600"}>
-        <Box display={"flex"} justifyContent={"center"}>
-          <Box as={motion.section} initial={{ opacity: 0 }} animate={{ opacity: 1 }} pt="40" pb="24" px={{ base: "4", md: "20" }}>
+      <Box  backgroundColor={"brand.600"}>
+        <Box  height={"100vh"} display={"flex"} justifyContent={"center"}>
+          <Box
+          pt="52"
+            as={motion.section}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            
+            px={{ base: "4", md: "20" }}
+          >
             <Container maxW="900px">
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
                 <Heading
                   mb="16px"
                   as="h1"
@@ -42,7 +64,11 @@ const Home: NextPage = () => {
                   Create your perfect resume
                 </Heading>
               </motion.div>
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
                 <Text
                   textAlign={"center"}
                   color="brand.900"
@@ -50,10 +76,15 @@ const Home: NextPage = () => {
                   maxW="2xl"
                   mb="28px"
                 >
-                  A simple and easy-to-use tool for creating and editing resumes.
+                  A simple and easy-to-use tool for creating and editing
+                  resumes.
                 </Text>
               </motion.div>
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5 }}
+              >
                 <Flex justifyContent={"center"}>
                   <Button
                     px="20px"
@@ -72,51 +103,60 @@ const Home: NextPage = () => {
             </Container>
           </Box>
         </Box>
-        <Box as="section" py="24">
-          <Container maxW="500px">
+        <Box as="section" py="250px">
+          <Container maxW="800px">
             <Stack direction={{ base: "column", lg: "column" }} spacing={16}>
-            <Box as={motion.section} initial={{ opacity: 0 }} animate={{ opacity: 1 }} >
+              <Flex alignItems={"center"} data-aos="fade-right" data-aos-duration="700" >
                 <Image
                   height="300px"
-                  width="500px"
+                  maxWidth="400px"
                   borderRadius="lg"
                   src="https://source.unsplash.com/featured/?workplace"
                   alt="workplace"
                   mb="8"
                 />
+                
+                <Flex ml={["0rem", "3rem"]} direction={"column"}>
                 <Heading color={"brand.900"} as="h2" size="xl" mb="4">
                   Effortless Resume Creation
                 </Heading>
-                <Text color={"brand.900"} fontSize="lg" mb="6">
+                <Text color={"brand.900"} fontSize="md" mb="6">
                   Our resume builder makes it easy to create a professional
                   resume in minutes. Simply choose from one of our templates and
-                  customize the content to your liking. Using Markdown, you can modify it however you wish.
+                  customize the content to your liking. Using Markdown, you can
+                  modify it however you wish.
                 </Text>
-              </Box>
-              <Box flex="1">
+                </Flex>
+              </Flex>
+              <Flex alignItems={"center"} data-aos="fade-right" data-aos-duration="700" >
+              
+                
+                <Flex mr={["0rem", "3rem"]} direction={"column"}>
+                <Heading color={"brand.900"} as="h2" size="xl" mb="4">
+                  Effortless Resume Creation
+                </Heading>
+                <Text color={"brand.900"} fontSize="md" mb="6">
+                  Our resume builder makes it easy to create a professional
+                  resume in minutes. Simply choose from one of our templates and
+                  customize the content to your liking. Using Markdown, you can
+                  modify it however you wish.
+                </Text>
+                </Flex>
                 <Image
                   height="300px"
-                  width="500px"
+                  maxWidth="400px"
                   borderRadius="lg"
                   src="https://source.unsplash.com/featured/?computer"
-                  alt="computer"
+                  alt="workplace"
                   mb="8"
                 />
-                <Heading color={"brand.900"} as="h2" size="xl" mb="4">
-                  Powerful Editing Tools
-                </Heading>
-                <Text color={"brand.900"} fontSize="lg" mb="6">
-                  Our editing tools make it easy to customize your resume to
-                  your liking. You can add, remove, and rearrange sections,
-                  change the colors and fonts, and much more.
-                </Text>
-              </Box>
+              </Flex>
+           
             </Stack>
           </Container>
         </Box>
       </Box>
       <Footer />
-
     </>
   );
 };
