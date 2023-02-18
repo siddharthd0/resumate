@@ -35,7 +35,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
     >
       <Box display={"flex"} alignItems={"center !important"}>
         <Heading className="logo" fontSize="2xl">
-          Resumate
+          Resumate.
         </Heading>
       </Box>
       <Spacer />
@@ -56,7 +56,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
           _hover={{
             color: "brand.800",
           }}
-          color="brand.800"
+          color="brand.900"
           href="/"
           mx={5}
         >
@@ -66,7 +66,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
           _hover={{
             color: "brand.800",
           }}
-          color="brand.800"
+          color="brand.900"
           href="/feedback"
           mx={5}
         >
@@ -76,7 +76,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
           _hover={{
             color: "brand.800",
           }}
-          color="brand.800"
+          color="brand.900"
           href="/editor"
           mx={5}
         >
