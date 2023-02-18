@@ -6,15 +6,15 @@ body {
   padding: 0;
   margin: 0;
   font-family:'Poppins', sans-serif !important;
-  background-color: black !important;
+  background-color: rgb(6, 6, 6) !important;
   
 }
-.hero-image {
-  background: black;
+.hero-image{
+  background-image: url("/newbg.jpg");
 }
 .logo {
   font-family: 'Maven Pro', sans-serif !important;
-  color: #02C39A;
+  color: whitesmoke;
 }
 a {
   color: inherit;
@@ -24,7 +24,26 @@ a {
 * {
   box-sizing: border-box;
 }
+/* Firefox */
+* {
+  scrollbar-width: none;
+  scrollbar-color: #ffffff #ffffff;
+}
 
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 3px solid #ffffff;
+  }
 
 .container {
   display: flex;

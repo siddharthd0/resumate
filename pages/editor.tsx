@@ -10,6 +10,9 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 import Navigation from "../components/navigation";
+//new stuff
+import Editor from "../components/Editor";
+
 const ResumeGenerator = () => {
   const [markdown, setMarkdown] = useState("# Heading\n\nSome text");
   const [css, setCss] = useState("h1 { color: red; }");
@@ -53,6 +56,7 @@ const ResumeGenerator = () => {
                   value={markdown}
                   onChange={handleMarkdownChange}
                 ></textarea>
+                <Editor/>
               </div>
             </TabPanel>
             <TabPanel>
