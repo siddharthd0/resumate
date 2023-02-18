@@ -19,6 +19,7 @@ const theme = extendTheme({
       baseStyle: {
         fontWeight: "600",
       },
+
       sizes: {
         lg: {
           h: "56px",
