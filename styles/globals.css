@@ -6,10 +6,15 @@ body {
   padding: 0;
   margin: 0;
   font-family:'Poppins', sans-serif !important;
-  background-image: url("/styles/bg.jpg) !important;
+  background-color: black !important;
+  
+}
+.hero-image {
+  background: black;
 }
 .logo {
   font-family: 'Maven Pro', sans-serif !important;
+  color: #02C39A;
 }
 a {
   color: inherit;

@@ -37,7 +37,7 @@ const Home: NextPage = () => {
     <>
       <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
       <Box>
-        <Box  height={"100vh"} display={"flex"} justifyContent={"center"}>
+        <Box  className="hero-image" height={"100vh"} display={"flex"} justifyContent={"center"}>
           <Box
           pt="52"
             as={motion.section}
@@ -91,7 +91,7 @@ const Home: NextPage = () => {
                     _hover={{
                       color: "brand.800",
                     }}
-                    color="brand.800"
+                    color="white"
                     fontWeight={"300"}
                     backgroundColor={"brand.700"}
                   >

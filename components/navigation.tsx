@@ -28,7 +28,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
       px="60px"
       py="18px"
       color="brand.800"
-      backgroundColor={"brand.700"}
+      backgroundColor={"transparent"}
       align="center"
       justify="space-between"
       wrap="wrap"
