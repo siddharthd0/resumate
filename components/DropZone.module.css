@@ -1,5 +1,5 @@
 .dropzone {
-  border: 2px dashed #ccc;
+  border: 2px solid #ef1111;
   border-radius: 8px;
   padding: 24px;
   display: flex;
@@ -8,6 +8,7 @@
   justify-content: center;
   height: 300px;
   outline: none;
+  width: 40%;
 }
 
 .error {

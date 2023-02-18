@@ -5,13 +5,11 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family:'Poppins', sans-serif !important;
-  background-color: rgb(6, 6, 6) !important;
-  
+  font-family:'Poppins', sans-serif !important;  
+
+
 }
-.hero-image{
-  background-image: url("/newbg.jpg");
-}
+
 .logo {
   font-family: 'Maven Pro', sans-serif !important;
   color: whitesmoke;
@@ -24,26 +22,6 @@ a {
 * {
   box-sizing: border-box;
 }
-/* Firefox */
-* {
-  scrollbar-width: none;
-  scrollbar-color: #ffffff #ffffff;
-}
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 10px;
-}
-
-*::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #ffffff;
-  border-radius: 15px;
-  border: 3px solid #ffffff;
-  }
 
 .container {
   display: flex;
@@ -101,6 +79,17 @@ h5 {
 h6 {
   font-size: 5px !important;
 }
-p, li{
-  color: blue;
+
+.editorInput {
+  width: 400px;
+  height: 1000px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: rgb(17, 25, 27);
+  border-radius: 10px;
+  color:white;
+  
 }

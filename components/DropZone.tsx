@@ -2,15 +2,15 @@ import Image from "next/image";
 import React, { useCallback, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import classes from "./DropZone.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import { FiUpload } from "react-icons/fi";
 import { storage, db } from "../firebase";
+import { Icon } from "@chakra-ui/react";
 import {
   addDoc,
   collection,
   doc,
   serverTimestamp,
-  updateDoc
+  updateDoc,
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "@firebase/storage";
 
@@ -36,13 +36,13 @@ const DropZone = () => {
 
     const docRef = await addDoc(collection(db, "resumes"), {
       username: usernameRef.current?.value || "",
-      timestamp: serverTimestamp()
+      timestamp: serverTimestamp(),
     });
     const fileRef = ref(storage, `resumes/${docRef.id}/${selectedFile.name}`);
     await uploadBytes(fileRef, selectedFile);
     const downloadURL = await getDownloadURL(fileRef);
     await updateDoc(doc(db, "resumes", docRef.id), {
-      file: downloadURL
+      file: downloadURL,
     });
 
     if (usernameRef.current) {
@@ -61,13 +61,15 @@ const DropZone = () => {
         {errorMessage && <p className={classes.error}>{errorMessage}</p>}
         {selectedFile ? (
           <div className="preview">
-            <FontAwesomeIcon icon={faFilePdf} className="pdf-icon" />
+            <Icon as={FiUpload} w={20} h={20} />
             <div className="file-info">
               <div className="file-name">{selectedFile.name}</div>
             </div>
           </div>
         ) : (
-          <p>Drag and drop a PDF file here, or click to select a file</p>
+          <>
+            <Icon as={FiUpload} w={10} h={10} />
+          </>
         )}
       </div>
       <input ref={usernameRef} type="text" placeholder="add your name" />

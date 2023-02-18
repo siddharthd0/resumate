@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { marked } from "marked";
 import {
   Flex,
@@ -8,10 +8,12 @@ import {
   TabPanels,
   Tab,
   TabPanel,
+  Input,
+  Button,
 } from "@chakra-ui/react";
 import Navigation from "../components/navigation";
-//new stuff
-import Editor from "../components/Editor";
+import Footer from "../components/footer";
+import jsPDF from "jspdf";
 
 const ResumeGenerator = () => {
   const [markdown, setMarkdown] = useState("# Heading\n\nSome text");
@@ -20,6 +22,7 @@ const ResumeGenerator = () => {
   const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
   const [preview, setPreview] = useState("");
+  const previewRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setPreview(marked(markdown));
@@ -39,41 +42,75 @@ const ResumeGenerator = () => {
     return { __html: `<style>${css}</style>` };
   };
 
+  const handleSaveAsPDF = () => {
+    if (!previewRef.current) return;
+    const pdf = new jsPDF();
+    const previewElement = previewRef.current;
+    pdf.html(previewElement.innerHTML, {
+      callback: function () {
+        pdf.save("resume.pdf");
+      },
+    });
+  };
+
   return (
     <>
-      <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
-      <Flex margin={"5rem auto"} maxW={"1000px"}>
-        <Tabs maxW={"400px"} variant="enclosed">
-          <TabList>
-            <Tab>Markdown Editor</Tab>
-            <Tab>CSS Editor (Styling)</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <div className="editor">
-                <h2>Markdown Editor</h2>
-                <textarea
-                  value={markdown}
-                  onChange={handleMarkdownChange}
-                ></textarea>
-                <Editor/>
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="editor">
-                <h2>CSS Editor</h2>
-                <textarea value={css} onChange={handleCssChange}></textarea>
-              </div>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
+      <Box bgColor="brand.600">
+        <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
+        <Flex margin={"0 auto"} py="5rem" maxW={"1000px"}>
+          <Tabs isFitted variant="enclosed">
+            <TabList>
+              <Tab color="brand.900">Markdown Editor</Tab>
+              <Tab color="brand.900">CSS Editor (Styling)</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <div>
+                  <textarea
+                    className="editorInput"
+                    value={markdown}
+                    onChange={handleMarkdownChange}
+                  ></textarea>
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <div>
+                  <textarea
+                    className="editorInput"
+                    value={css}
+                    onChange={handleCssChange}
+                  ></textarea>
+                </div>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
 
-        <div className="preview" dangerouslySetInnerHTML={getPreviewStyle()} />
-        <div
-          className="preview"
-          dangerouslySetInnerHTML={{ __html: preview }}
-        ></div>
-      </Flex>
+          <div
+            className="preview"
+            ref={previewRef}
+            dangerouslySetInnerHTML={getPreviewStyle()}
+          />
+          <div
+            className="preview"
+            ref={previewRef}
+            dangerouslySetInnerHTML={{ __html: preview }}
+          ></div>
+          <Button
+            px="60px"
+            mt="1rem"
+            _hover={{
+             
+              backgroundColor: "brand.500",
+            }}
+            color="white"
+            fontWeight={"300"}
+            backgroundColor={"brand.700"}
+          >
+            Save as PDF
+          </Button>
+        </Flex>
+      </Box>
+      <Footer />
     </>
   );
 };

@@ -25,10 +25,10 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
       initial="hidden"
       animate="visible"
       alignItems={"center !important"}
-      px="60px"
-      py="18px"
-      color="brand.800"
-      backgroundColor={"transparent"}
+      px="30px"
+      py="14px"
+      color="brand.900"
+      backgroundColor={"brand.700"}
       align="center"
       justify="space-between"
       wrap="wrap"
@@ -69,6 +69,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
           color="brand.900"
           href="/feedback"
           mx={5}
+
         >
           Resume Feedback
         </Link>

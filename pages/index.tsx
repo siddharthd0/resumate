@@ -33,9 +33,10 @@ const Home: NextPage = () => {
 
   return (
     <>
+     <Box bgColor="brand.600">
       <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
-      <Box>
-        <Box  className="hero-image" height={"100vh"} display={"flex"} justifyContent={"center"}>
+     
+        <Box  bgColor="brand.600" color="brand.600" height={"100vh"} display={"flex"} justifyContent={"center"}>
           <Box
             pt="52"
             as={motion.section}
@@ -86,7 +87,7 @@ const Home: NextPage = () => {
                     px="20px"
                     mt="1rem"
                     _hover={{
-                      color: "brand.800"
+                      backgroundColor: "brand.500",
                     }}
                     color="white"
                     fontWeight={"300"}
@@ -104,7 +105,7 @@ const Home: NextPage = () => {
             <Stack direction={{ base: "column", lg: "column" }} spacing={16}>
               <Flex
                 alignItems={"center"}
-                data-aos="fade-right"
+                data-aos="fade-left"
                 data-aos-duration="700"
               >
                 <Image
