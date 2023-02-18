@@ -18,7 +18,6 @@ import Navigation from "../components/navigation";
 import Footer from "../components/footer";
 import React from "react";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -37,7 +36,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
-      <Box  backgroundColor={"brand.600"}>
+      <Box  background={"https://static.vecteezy.com/system/resources/previews/010/825/735/non_2x/dark-background-random-minimalist-abstract-illustration-for-logo-card-banner-web-and-printing-free-vector.jpg"}>
         <Box  height={"100vh"} display={"flex"} justifyContent={"center"}>
           <Box
           pt="52"
@@ -92,7 +91,7 @@ const Home: NextPage = () => {
                     _hover={{
                       color: "brand.800",
                     }}
-                    color="brand.900"
+                    color="brand.800"
                     fontWeight={"300"}
                     backgroundColor={"brand.700"}
                   >

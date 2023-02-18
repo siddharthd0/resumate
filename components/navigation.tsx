@@ -27,7 +27,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
       alignItems={"center !important"}
       px="60px"
       py="18px"
-      color="brand.900"
+      color="brand.800"
       backgroundColor={"brand.700"}
       align="center"
       justify="space-between"
@@ -56,7 +56,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
           _hover={{
             color: "brand.800",
           }}
-          color="brand.900"
+          color="brand.800"
           href="/"
           mx={5}
         >
@@ -66,7 +66,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
           _hover={{
             color: "brand.800",
           }}
-          color="brand.900"
+          color="brand.800"
           href="/feedback"
           mx={5}
         >
@@ -76,7 +76,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
           _hover={{
             color: "brand.800",
           }}
-          color="brand.900"
+          color="brand.800"
           href="/editor"
           mx={5}
         >
