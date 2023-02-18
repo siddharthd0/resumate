@@ -9,69 +9,73 @@ import {
   Text,
   Flex,
   Stack,
-  Image,
+  Image, 
+  chakra,
+  shouldForwardProp
 } from "@chakra-ui/react";
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
 import React from "react";
-import { motion, isValidMotionProp } from 'framer-motion'
-
-const ChakraBox = chakra(motion.div, {
-  shouldForwardProp: isValidMotionProp,
-})
+import { motion } from "framer-motion";
 
 const Home: NextPage = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
+
   return (
     <>
       <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
       <Box backgroundColor={"brand.600"}>
         <Box display={"flex"} justifyContent={"center"}>
-          <Box as="section" pt="40" pb="24" px={{ base: "4", md: "20" }}>
+          <Box as={motion.section} initial={{ opacity: 0 }} animate={{ opacity: 1 }} pt="40" pb="24" px={{ base: "4", md: "20" }}>
             <Container maxW="900px">
-              <Heading
-                mb="16px"
-                as="h1"
-                fontSize="6xl"
-                color="brand.900"
-                textAlign="center"
-                textShadow="1px 1px 2px rgba(0,0,0,0.3)"
-              >
-                Create your perfect resume
-              </Heading>
-
-              <Text
-                textAlign={"center"}
-                color="brand.900"
-                fontSize="xl"
-                maxW="2xl"
-                mb="28px"
-              >
-                A simple and easy-to-use tool for creating and editing resumes.
-              </Text>
-              <Flex justifyContent={"center"}>
-                <Button
-                  px="20px"
-                  mt="1rem"
-                  _hover={{
-                    color: "brand.800",
-                  }}
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+                <Heading
+                  mb="16px"
+                  as="h1"
+                  fontSize="6xl"
                   color="brand.900"
-                  fontWeight={"300"}
-                  backgroundColor={"brand.700"}
+                  textAlign="center"
+                  textShadow="1px 1px 2px rgba(0,0,0,0.3)"
                 >
-                  Build your Resume now
-                </Button>
-              </Flex>
+                  Create your perfect resume
+                </Heading>
+              </motion.div>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>
+                <Text
+                  textAlign={"center"}
+                  color="brand.900"
+                  fontSize="xl"
+                  maxW="2xl"
+                  mb="28px"
+                >
+                  A simple and easy-to-use tool for creating and editing resumes.
+                </Text>
+              </motion.div>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
+                <Flex justifyContent={"center"}>
+                  <Button
+                    px="20px"
+                    mt="1rem"
+                    _hover={{
+                      color: "brand.800",
+                    }}
+                    color="brand.900"
+                    fontWeight={"300"}
+                    backgroundColor={"brand.700"}
+                  >
+                    Build your Resume now
+                  </Button>
+                </Flex>
+              </motion.div>
             </Container>
           </Box>
         </Box>
         <Box as="section" py="24">
           <Container maxW="500px">
             <Stack direction={{ base: "column", lg: "column" }} spacing={16}>
-              <Box flex="1">
+            <Box as={motion.section} initial={{ opacity: 0 }} animate={{ opacity: 1 }} >
                 <Image
                   height="300px"
                   width="500px"
@@ -80,10 +84,10 @@ const Home: NextPage = () => {
                   alt="workplace"
                   mb="8"
                 />
-                <Heading data-aos="fade-up" color={"brand.900"} as="h2" size="xl" mb="4">
+                <Heading color={"brand.900"} as="h2" size="xl" mb="4">
                   Effortless Resume Creation
                 </Heading>
-                <Text data-aos="fade-up" color={"brand.900"} fontSize="lg" mb="6">
+                <Text color={"brand.900"} fontSize="lg" mb="6">
                   Our resume builder makes it easy to create a professional
                   resume in minutes. Simply choose from one of our templates and
                   customize the content to your liking. Using Markdown, you can modify it however you wish.
@@ -112,10 +116,6 @@ const Home: NextPage = () => {
         </Box>
       </Box>
       <Footer />
-      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 
     </>
   );
