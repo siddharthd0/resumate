@@ -42,7 +42,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
             color: "brand.800",
           }}
           color="brand.900"
-          href="#"
+          href="/"
           mx={5}
         >
           Home

@@ -14,6 +14,11 @@ import {
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
 import React from "react";
+import { motion, isValidMotionProp } from 'framer-motion'
+
+const ChakraBox = chakra(motion.div, {
+  shouldForwardProp: isValidMotionProp,
+})
 
 const Home: NextPage = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -75,10 +80,10 @@ const Home: NextPage = () => {
                   alt="workplace"
                   mb="8"
                 />
-                <Heading color={"brand.900"} as="h2" size="xl" mb="4">
+                <Heading data-aos="fade-up" color={"brand.900"} as="h2" size="xl" mb="4">
                   Effortless Resume Creation
                 </Heading>
-                <Text color={"brand.900"} fontSize="lg" mb="6">
+                <Text data-aos="fade-up" color={"brand.900"} fontSize="lg" mb="6">
                   Our resume builder makes it easy to create a professional
                   resume in minutes. Simply choose from one of our templates and
                   customize the content to your liking. Using Markdown, you can modify it however you wish.
@@ -107,6 +112,11 @@ const Home: NextPage = () => {
         </Box>
       </Box>
       <Footer />
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
     </>
   );
 };

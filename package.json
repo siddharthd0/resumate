@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "aos": "^3.0.0-beta.6",
     "framer-motion": "^9.0.4",
     "next": "12.2.0",
     "react": "18.2.0",
@@ -27,6 +28,7 @@
     "remark-toc": "^8.0.1"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.4",
     "@types/node": "18.0.1",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",

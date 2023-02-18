@@ -7,7 +7,6 @@ import {
   Button,
   Container,
   VStack,
-  CodeEditor,
 } from "@chakra-ui/react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
