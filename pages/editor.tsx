@@ -14,6 +14,7 @@ import {
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
 import jsPDF from "jspdf";
+import html2pdf from "html2pdf.js";
 
 const ResumeGenerator = () => {
   const [markdown, setMarkdown] = useState("# Heading\n\nSome text");
@@ -42,16 +43,52 @@ const ResumeGenerator = () => {
     return { __html: `<style>${css}</style>` };
   };
 
+  // const handleSaveAsPDF = () => {
+  //   if (!previewRef.current) return;
+  //   const pdf = new jsPDF();
+  //   const previewElement = previewRef.current;
+  
+  //   // Create a new element with the same content as the preview element
+  //   const contentElement = document.createElement("div");
+  //   contentElement.innerHTML = previewElement.innerHTML;
+  
+  //   // Apply the CSS styles to the new element
+  //   const styleElement = document.createElement("style");
+  //   styleElement.innerHTML = css;
+  //   contentElement.prepend(styleElement);
+  
+  //   // Generate the PDF from the new element
+  //   pdf.html(contentElement, {
+  //     callback: function () {
+  //       pdf.save("resume.pdf");
+  //     },
+  //   });
+  // };
   const handleSaveAsPDF = () => {
     if (!previewRef.current) return;
-    const pdf = new jsPDF();
     const previewElement = previewRef.current;
-    pdf.html(previewElement.innerHTML, {
-      callback: function () {
-        pdf.save("resume.pdf");
-      },
-    });
+
+    // Create a new element with the same content as the preview element
+    const contentElement = document.createElement("div");
+    contentElement.innerHTML = previewElement.innerHTML;
+
+    // Apply the CSS styles to the new element
+    const styleElement = document.createElement("style");
+    styleElement.innerHTML = css;
+    contentElement.prepend(styleElement);
+
+    // Generate the PDF from the new element using html2pdf
+    const pdfOptions = {
+      margin: 1,
+      filename: "resume.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
+
+    html2pdf().set(pdfOptions).from(contentElement).save();
   };
+  
 
   return (
     <>
@@ -86,7 +123,7 @@ const ResumeGenerator = () => {
           </Tabs>
 
           <div
-            className="preview"
+            className="width1"
             ref={previewRef}
             dangerouslySetInnerHTML={getPreviewStyle()}
           />
@@ -95,17 +132,7 @@ const ResumeGenerator = () => {
             ref={previewRef}
             dangerouslySetInnerHTML={{ __html: preview }}
           ></div>
-          <Button
-            px="60px"
-            mt="1rem"
-            _hover={{
-             
-              backgroundColor: "brand.500",
-            }}
-            color="white"
-            fontWeight={"300"}
-            backgroundColor={"brand.700"}
-          >
+          <Button px="50px" onClick={handleSaveAsPDF}>
             Save as PDF
           </Button>
         </Flex>

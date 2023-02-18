@@ -26,6 +26,7 @@
     "firebase": "^9.17.1",
     "formidable": "^2.1.1",
     "framer-motion": "^9.0.4",
+    "html2pdf.js": "^0.10.1",
     "jspdf": "^2.5.1",
     "marked": "^4.2.12",
     "monaco-editor": "^0.35.0",

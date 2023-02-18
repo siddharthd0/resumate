@@ -4,7 +4,7 @@ import { useDropzone } from "react-dropzone";
 import classes from "./DropZone.module.css";
 import { FiUpload } from "react-icons/fi";
 import { storage, db } from "../firebase";
-import { Icon } from "@chakra-ui/react";
+import { Icon, chakra } from "@chakra-ui/react";
 import {
   addDoc,
   collection,
@@ -56,24 +56,35 @@ const DropZone = () => {
 
   return (
     <>
-      <div {...getRootProps()} className={classes.dropzone}>
-        <input {...getInputProps()} />
-        {errorMessage && <p className={classes.error}>{errorMessage}</p>}
-        {selectedFile ? (
-          <div className="preview">
-            <Icon as={FiUpload} w={20} h={20} />
-            <div className="file-info">
-              <div className="file-name">{selectedFile.name}</div>
+      <chakra.div minH="100vh">
+        <div {...getRootProps()} className={classes.dropzone}>
+          <input {...getInputProps()} />
+          {errorMessage && <p className={classes.error}>{errorMessage}</p>}
+          {selectedFile ? (
+            <div className="preview">
+              <div className="file-info">
+                <div className="file-name">{selectedFile.name}</div>
+              </div>
             </div>
-          </div>
-        ) : (
-          <>
-            <Icon as={FiUpload} w={10} h={10} />
-          </>
-        )}
-      </div>
-      <input ref={usernameRef} type="text" placeholder="add your name" />
-      <button onClick={uploadResume}>Upload</button>
+          ) : (
+            <div>
+              <Icon as={FiUpload} w={10} h={10} />
+            </div>
+          )}
+        </div>
+
+        <input ref={usernameRef} type="text" placeholder="add your name" />
+        <chakra.button
+          bgColor={"#fff3"}
+          h={"46px"}
+          w={"120px"}
+          outline="1px solid #fff"
+          borderRadius="7px"
+          onClick={uploadResume}
+        >
+          Upload
+        </chakra.button>
+        
     </>
   );
 };
