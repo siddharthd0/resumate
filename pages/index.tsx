@@ -12,7 +12,7 @@ import {
   Image,
   Spacer,
   chakra,
-  shouldForwardProp,
+  shouldForwardProp
 } from "@chakra-ui/react";
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
@@ -23,28 +23,25 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-
-
 const Home: NextPage = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
   useEffect(() => {
-  AOS.init();
-  AOS.refresh();
-}, []);
+    AOS.init();
+    AOS.refresh();
+  }, []);
 
   return (
     <>
       <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
-      <Box  backgroundColor={"brand.600"}>
-        <Box  height={"100vh"} display={"flex"} justifyContent={"center"}>
+      <Box backgroundColor={"brand.600"}>
+        <Box height={"100vh"} display={"flex"} justifyContent={"center"}>
           <Box
-          pt="52"
+            pt="52"
             as={motion.section}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            
             px={{ base: "4", md: "20" }}
           >
             <Container maxW="900px">
@@ -90,7 +87,7 @@ const Home: NextPage = () => {
                     px="20px"
                     mt="1rem"
                     _hover={{
-                      color: "brand.800",
+                      color: "brand.800"
                     }}
                     color="brand.900"
                     fontWeight={"300"}
@@ -106,7 +103,11 @@ const Home: NextPage = () => {
         <Box as="section" py="250px">
           <Container maxW="800px">
             <Stack direction={{ base: "column", lg: "column" }} spacing={16}>
-              <Flex alignItems={"center"} data-aos="fade-right" data-aos-duration="700" >
+              <Flex
+                alignItems={"center"}
+                data-aos="fade-right"
+                data-aos-duration="700"
+              >
                 <Image
                   height="300px"
                   maxWidth="400px"
@@ -115,32 +116,34 @@ const Home: NextPage = () => {
                   alt="workplace"
                   mb="8"
                 />
-                
+
                 <Flex ml={["0rem", "3rem"]} direction={"column"}>
-                <Heading color={"brand.900"} as="h2" size="xl" mb="4">
-                  Effortless Resume Creation
-                </Heading>
-                <Text color={"brand.900"} fontSize="md" mb="6">
-                  Our resume builder makes it easy to create a professional
-                  resume in minutes. Simply choose from one of our templates and
-                  customize the content to your liking. Using Markdown, you can
-                  modify it however you wish.
-                </Text>
+                  <Heading color={"brand.900"} as="h2" size="xl" mb="4">
+                    Effortless Resume Creation
+                  </Heading>
+                  <Text color={"brand.900"} fontSize="md" mb="6">
+                    Our resume builder makes it easy to create a professional
+                    resume in minutes. Simply choose from one of our templates
+                    and customize the content to your liking. Using Markdown,
+                    you can modify it however you wish.
+                  </Text>
                 </Flex>
               </Flex>
-              <Flex alignItems={"center"} data-aos="fade-right" data-aos-duration="700" >
-              
-                
+              <Flex
+                alignItems={"center"}
+                data-aos="fade-right"
+                data-aos-duration="700"
+              >
                 <Flex mr={["0rem", "3rem"]} direction={"column"}>
-                <Heading color={"brand.900"} as="h2" size="xl" mb="4">
-                  Effortless Resume Creation
-                </Heading>
-                <Text color={"brand.900"} fontSize="md" mb="6">
-                  Our resume builder makes it easy to create a professional
-                  resume in minutes. Simply choose from one of our templates and
-                  customize the content to your liking. Using Markdown, you can
-                  modify it however you wish.
-                </Text>
+                  <Heading color={"brand.900"} as="h2" size="xl" mb="4">
+                    Effortless Resume Creation
+                  </Heading>
+                  <Text color={"brand.900"} fontSize="md" mb="6">
+                    Our resume builder makes it easy to create a professional
+                    resume in minutes. Simply choose from one of our templates
+                    and customize the content to your liking. Using Markdown,
+                    you can modify it however you wish.
+                  </Text>
                 </Flex>
                 <Image
                   height="300px"
@@ -151,7 +154,6 @@ const Home: NextPage = () => {
                   mb="8"
                 />
               </Flex>
-           
             </Stack>
           </Container>
         </Box>
