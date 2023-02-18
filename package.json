@@ -19,6 +19,7 @@
     "@types/formidable": "^2.0.5",
     "@types/react-pdf": "^6.2.0",
     "aos": "^3.0.0-beta.6",
+    "firebase": "^9.17.1",
     "formidable": "^2.1.1",
     "framer-motion": "^9.0.4",
     "next": "12.2.0",
