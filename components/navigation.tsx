@@ -37,13 +37,34 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
         width={{ base: "full", md: "auto" }}
         alignItems="center"
       >
-        <Link href="#" mx={5}>
+        <Link
+          _hover={{
+            color: "brand.800",
+          }}
+          color="brand.900"
+          href="#"
+          mx={5}
+        >
           Home
         </Link>
-        <Link href="#" mx={5}>
+        <Link
+          _hover={{
+            color: "brand.800",
+          }}
+          color="brand.900"
+          href="/feedback"
+          mx={5}
+        >
           Resume Feedback
         </Link>
-        <Link href="#" mx={5}>
+        <Link
+          _hover={{
+            color: "brand.800",
+          }}
+          color="brand.900"
+          href="/editor"
+          mx={5}
+        >
           Resume Editor
         </Link>
       </Box>
