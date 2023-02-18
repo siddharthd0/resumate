@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDropzone, DropzoneOptions } from "react-dropzone";
+import DropZone from "../components/DropZone";
 
 function UploadResume(): JSX.Element {
   const [file, setFile] = useState<File | null>(null);
@@ -43,17 +44,20 @@ function UploadResume(): JSX.Element {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div {...getRootProps()}>
-        <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Drop the PDF file here ...</p>
-        ) : (
-          <p>Drag and drop a PDF file here, or click to select a PDF file</p>
-        )}
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    // <form onSubmit={handleSubmit}>
+    //   <div {...getRootProps()}>
+    //     <input {...getInputProps()} />
+    //     {isDragActive ? (
+    //       <p>Drop the PDF file here ...</p>
+    //     ) : (
+    //       <p>Drag and drop a PDF file here, or click to select a PDF file</p>
+    //     )}
+    //   </div>
+    //   <button type="submit">Submit</button>
+    // </form>
+    <div>
+      <DropZone />
+    </div>
   );
 }
 

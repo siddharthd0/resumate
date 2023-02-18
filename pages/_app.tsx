@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+//import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
@@ -9,28 +9,28 @@ const colors = {
     900: "#94a3b8", //paragraphs
     800: "#fff", //titles
     700: "#172032", //header & bg of course box
-    600: "#0f172a", //dark background color
-  },
+    600: "#0f172a" //dark background color
+  }
 };
 
 const theme = extendTheme({
   components: {
     Heading: {
       baseStyle: {
-        fontWeight: "600",
+        fontWeight: "600"
       },
 
       sizes: {
         lg: {
           h: "56px",
           fontSize: "lg",
-          px: "32px",
-        },
-      },
-    },
+          px: "32px"
+        }
+      }
+    }
   },
 
-  colors,
+  colors
 });
 function MyApp({ Component, pageProps }: AppProps) {
   return (
