@@ -12,96 +12,51 @@ import {
   Icon,
   chakra,
   useToast,
-  Spacer
+  Spacer,
 } from "@chakra-ui/react";
 import {
   addDoc,
   collection,
   doc,
   serverTimestamp,
-  updateDoc
+  updateDoc,
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "@firebase/storage";
 import FeedbackHero from "./feedbackHero";
 import { BsArrowRightCircleFill } from "react-icons/bs";
-import * as pdfjsLib from "pdfjs-dist";
-
-// Extract text from the PDF file using pdf.js library
-const extractTextFromPDF = async (file: any): Promise<string> => {
-  const pdf = await pdfjsLib.getDocument({ url: file }).promise;
-  const numPages = pdf.numPages;
-  let fullText = "";
-
-  for (let i = 1; i <= numPages; i++) {
-    const page = await pdf.getPage(i);
-    const content = await page.getTextContent();
-    fullText += content.items.map((item: any) => item.str + " ").join("");
-  }
-
-  return fullText;
-};
-
-const calculateScore = (text: string): number => {
-  const keywords = ["react", "node", "firebase"];
-  const keywordCount = keywords.reduce((count, keyword) => {
-    const regex = new RegExp(keyword, "gi");
-    return count + (text.match(regex) || []).length;
-  }, 0);
-
-  return keywordCount / keywords.length;
-};
 
 const DropZone = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const usernameRef = useRef<HTMLInputElement>(null);
   const toast = useToast();
+
   const onDrop = useCallback(
-    async (acceptedFiles: File[]) => {
+    (acceptedFiles: File[]) => {
       if (acceptedFiles.length > 1) {
         toast({
           title: "Error",
           description: "Please upload only one PDF file.",
           status: "error",
           duration: 5000,
-          isClosable: true
+          isClosable: true,
         });
-        return;
-      }
-
-      const file = acceptedFiles[0];
-
-      if (file.type !== "application/pdf") {
+      } else if (acceptedFiles[0].type !== "application/pdf") {
         toast({
           title: "Error",
           description: "Please upload a PDF file.",
           status: "error",
           duration: 5000,
-          isClosable: true
-        });
-        return;
-      }
-
-      setSelectedFile(file);
-      const fileUrl = URL.createObjectURL(file);
-      const text = await extractTextFromPDF(fileUrl);
-      const score = calculateScore(text);
-
-      // Show feedback to the user
-      if (score === 0) {
-        toast({
-          title: "No keywords found",
-          description: "No keywords found in the uploaded resume.",
-          status: "info",
-          duration: 5000,
-          isClosable: true
+          isClosable: true,
         });
       } else {
+        setSelectedFile(acceptedFiles[0]);
+        console.log(acceptedFiles);
         toast({
-          title: "Resume score",
-          description: `Your resume score is ${score.toFixed(2)}.`,
+          title: "Success",
+          description: "File selected successfully.",
           status: "success",
           duration: 5000,
-          isClosable: true
+          isClosable: true,
         });
       }
     },
@@ -113,13 +68,13 @@ const DropZone = () => {
 
     const docRef = await addDoc(collection(db, "resumes"), {
       username: usernameRef.current?.value || "",
-      timestamp: serverTimestamp()
+      timestamp: serverTimestamp(),
     });
     const fileRef = ref(storage, `resumes/${docRef.id}/${selectedFile.name}`);
     await uploadBytes(fileRef, selectedFile);
     const downloadURL = await getDownloadURL(fileRef);
     await updateDoc(doc(db, "resumes", docRef.id), {
-      file: downloadURL
+      file: downloadURL,
     });
 
     if (usernameRef.current) {
@@ -131,7 +86,7 @@ const DropZone = () => {
       description: "Resume uploaded successfully!",
       status: "success",
       duration: 5000,
-      isClosable: true
+      isClosable: true,
     });
   };
 
@@ -149,6 +104,7 @@ const DropZone = () => {
         margin="auto"
         maxW={"1000px"}
       >
+
         <Heading color="brand.800" fontSize="5xl !important">
           Upload your resume
         </Heading>
