@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import html2canvas from "html2canvas";
-// import "jspdf-autotable";
 import jsPDF from "jspdf";
 import {
   Heading,
@@ -9,14 +8,11 @@ import {
   FormLabel,
   Input,
   Button,
-  Box,
   chakra,
   Flex,
   Spacer,
-  useToast,
   Divider,
 } from "@chakra-ui/react";
-import Navigation from "../components/navigation";
 import Footer from "../components/footer";
 
 export default function ResumeGenerator() {
@@ -38,81 +34,16 @@ export default function ResumeGenerator() {
     generatePreview();
   }, [name, email, phone, education, experience, skills]);
 
-  const generatePdf = () => {
-    // const element = document.getElementById('resume-preview');
-
-    const doc = new jsPDF({
-      orientation: "portrait",
-      unit: "mm",
-      format: "a4",
-    });
-
-    // Add the name field separately with custom styling
-    // Add name
-    doc.setTextColor("#3d7be0");
-    doc.setFontSize(40);
-    doc.text(name, 20, 20);
-
-    // Add email
-    doc.setTextColor("black");
-    doc.setFontSize(10);
-    doc.text(email, 20, 35);
-
-    // Add phone
-    doc.setTextColor("black");
-    doc.setFontSize(10);
-    doc.text(phone, 70, 35);
-
-    // add line
-    doc.setLineWidth(0.5);
-    doc.setDrawColor(100);
-    doc.line(20, 25, 180, 25);
-
-    // Add education
-    doc.setFontSize(16);
-    doc.setTextColor("black");
-    doc.text("Education", 20, 70);
-    doc.setFontSize(14);
-    doc.setTextColor("gray");
-    doc.text(education, 20, 80);
-
-    // Add experience
-    doc.setFontSize(16);
-    doc.setTextColor("black");
-    doc.text("Experience", 20, 110);
-    doc.setFontSize(14);
-    doc.setTextColor("gray");
-    doc.text(experience, 20, 120);
-
-    // Add skills
-    doc.setFontSize(16);
-    doc.setTextColor("black");
-    doc.text("Skills", 20, 150);
-    doc.setFontSize(14);
-    doc.setTextColor("gray");
-    doc.text(skills, 20, 160);
-
-    // const imgData = previewUrl;
-    // doc.addImage(imgData, "PNG", 130, 20, 60, 80);
-    doc.save(`${name}-resume.pdf`);
-  };
-
   const downloadPdf = () => {
-    // Create a new jsPDF object
-    generatePdf();
+    const pdf = new jsPDF();
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+    pdf.addImage(previewUrl, "PNG", 0, 0, pdfWidth, pdfHeight, '', 'FAST', 0, 300);
+    pdf.save("resume.pdf");
   };
 
   return (
     <>
-      <Navigation
-        onOpen={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        onClose={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        isOpen={false}
-      />
       <Heading
         mb="19px !important"
         color="brand.900"
@@ -179,13 +110,15 @@ export default function ResumeGenerator() {
           <Button
             px="20px"
             mt="1rem"
+            onClick={downloadPdf}
             _hover={{
               backgroundColor: "brand.500",
             }}
             color="white"
+           
+
             fontWeight={"300"}
             backgroundColor={"brand.700"}
-            onClick={downloadPdf}
           >
             Download PDF
           </Button>
@@ -194,39 +127,39 @@ export default function ResumeGenerator() {
         <chakra.div
           mb="50px"
           padding="1rem"
-          height="700px"
+          height="1056px"
           borderRadius={"6px"}
           backgroundColor={"brand.800"}
-          width={"550px"}
+          width={"816px"}
           ref={previewRef}
         >
           <Heading color="#3d7be0" fontSize="5xl">
             {name}
           </Heading>
           <Flex mb="8px">
-            <Text textDecoration={"underline"} fontSize="sm">
+            <Text color="black" textDecoration={"underline"} fontSize="sm">
               {" "}
               {email}
             </Text>
             <Spacer />
-            <Text textDecoration={"underline"} fontSize="sm">
+            <Text color="black" textDecoration={"underline"} fontSize="sm">
               {" "}
               {phone}
             </Text>
           </Flex>
           <Divider bgColor="black" height={"1px"} fontWeight={"black"} />
-          <Heading mt="10px" fontSize="3xl">
+          <Heading color="black" mt="10px" fontSize="3xl">
             Education
           </Heading>
-          <Text>{education}</Text>
-          <Heading mt="10px" fontSize="3xl">
+          <Text color="black">{education}</Text>
+          <Heading color="black" mt="10px" fontSize="3xl">
             Experience
           </Heading>
-          <Text>{experience}</Text>
-          <Heading mt="10px" fontSize="3xl">
+          <Text color="black">{experience}</Text>
+          <Heading color="black" mt="10px" fontSize="3xl">
             Skills
           </Heading>
-          <Text>{skills}</Text>
+          <Text color="black">{skills}</Text>
         </chakra.div>
       </chakra.div>
 
