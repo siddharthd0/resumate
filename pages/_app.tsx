@@ -3,6 +3,8 @@ import "../styles/generate.css";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
+import pdfjsLib from "pdfjs-dist";
+import "pdfjs-dist/build/pdf.worker.entry";
 
 // 2. Extend the theme to include custom colors, fonts, etc
 const colors = {
@@ -12,7 +14,7 @@ const colors = {
     700: "#172032",
     600: "#0f172a",
     500: "#0E294F"
-  },
+  }
 };
 
 const theme = extendTheme({
