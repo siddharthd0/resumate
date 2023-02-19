@@ -8,7 +8,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-export default function feedbackHero() {
+export default function FeedbackHero() {
   const bg = useColorModeValue("brand.500", "gray.800");
   return (
     <>
