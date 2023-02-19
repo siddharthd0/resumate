@@ -104,9 +104,7 @@ const DropZone = () => {
         margin="auto"
         maxW={"1000px"}
       >
-        <Heading color="white" fontSize={"lg"}>
-          Get started
-        </Heading>
+
         <Heading color="brand.800" fontSize="5xl !important">
           Upload your resume
         </Heading>

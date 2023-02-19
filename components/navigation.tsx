@@ -28,7 +28,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
       justify="space-between"
       wrap="wrap"
     >
-      <Box mt="-40px" mb="-50px" display={"flex"} alignItems={"center !important"}>
+       <Box py="10px" maxW={"300px"} mt="-40px" mb="-50px" display={"flex"} alignItems={"center !important"}>
         <Image src="/Resu2.png" alt="logo" />
       </Box>
       <Spacer />

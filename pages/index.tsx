@@ -38,7 +38,7 @@ const Home: NextPage = () => {
      
         <Box  bgColor="brand.600" color="brand.600" height={"100vh"} display={"flex"} justifyContent={"center"}>
           <Box
-            pt="100px"
+            pt="160px"
             as={motion.section}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
                 transition={{ delay: 2 }}
               >
                 <Box display={"flex"} justifyContent={"center"}>
-                  <Image height="130px" maxWidth="600px" src="/Resu2.png" alt="logo" />
+                 <Text fontWeight="300"  fontSize="5xl" color="brand.900">Resumate.</Text>
                 </Box>
               </motion.div>
               <motion.div
@@ -67,7 +67,7 @@ const Home: NextPage = () => {
                   textAlign="center"
                   textShadow="1px 1px 2px rgba(0,0,0,0.3)"
                 >
-                  Create your perfect resume
+                  Create your perfect resume.
                 </Heading>
               </motion.div>
               <motion.div
@@ -145,13 +145,10 @@ const Home: NextPage = () => {
               >
                 <Flex mr={["0rem", "3rem"]} direction={"column"}>
                   <Heading color={"brand.900"} as="h2" size="xl" mb="4">
-                    Effortless Resume Creation
+                    Resume Feedback and Optimization Tools
                   </Heading>
                   <Text color={"brand.900"} fontSize="md" mb="6">
-                    Our resume builder makes it easy to create a professional
-                    resume in minutes. Simply choose from one of our templates
-                    and customize the content to your liking. Using Markdown,
-                    you can modify it however you wish.
+                  Resumates' optimization and feedback tools offer users valuable insights to improve their resumes. The tools help identify areas for improvement, suggest optimization, and provide constructive feedback to create effective resumes. This increases job seekers' chances of being noticed by employers and landing their dream job.
                   </Text>
                 </Flex>
                 <Image
