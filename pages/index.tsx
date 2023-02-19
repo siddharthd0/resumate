@@ -148,7 +148,7 @@ const Home: NextPage = () => {
                     Resume Feedback and Optimization Tools
                   </Heading>
                   <Text color={"brand.900"} fontSize="md" mb="6">
-                  Resumates' optimization and feedback tools offer users valuable insights to improve their resumes. The tools help identify areas for improvement, suggest optimization, and provide constructive feedback to create effective resumes. This increases job seekers' chances of being noticed by employers and landing their dream job.
+                  Resumates optimization and feedback tools offer users valuable insights to improve their resumes. The tools help identify areas for improvement, suggest optimization, and provide constructive feedback to create effective resumes. This increases job seekers chances of being noticed by employers and landing their dream job.
                   </Text>
                 </Flex>
                 <Image
