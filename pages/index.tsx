@@ -12,6 +12,7 @@ import {
   Image,
   Spacer,
   chakra,
+  Link,
   shouldForwardProp
 } from "@chakra-ui/react";
 import Navigation from "../components/homenav";
@@ -92,6 +93,7 @@ const Home: NextPage = () => {
                 transition={{ delay: 1.5 }}
               >
                 <Flex justifyContent={"center"}>
+                  <Link href="./editor">
                   <Button
                     px="20px"
                     mt="1rem"
@@ -104,6 +106,7 @@ const Home: NextPage = () => {
                   >
                     Build your Resume now
                   </Button>
+                  </Link>
                 </Flex>
               </motion.div>
             </Container>

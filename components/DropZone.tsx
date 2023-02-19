@@ -137,6 +137,7 @@ const DropZone = () => {
     <>
       <FeedbackHero />
       <chakra.div
+      id="importantContainer"
         py="2rem"
         px="3rem"
         my="3rem !important"

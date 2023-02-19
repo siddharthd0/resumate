@@ -12,6 +12,8 @@ import {
   Input,
   Spacer,
   Button,
+  Text,
+  Link,
 } from "@chakra-ui/react";
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
@@ -21,15 +23,14 @@ import jsPDF from "jspdf";
 const ResumeGenerator = () => {
   const [markdown, setMarkdown] = useState(`<div class="body-container"> 
 
-# {NAME}
+# John Doe
 
 
 <div class="section headerInfo">
 
-- {EMAIL}
-- {PHONE}
-- [{WEBSITE}](https://{WEBSITE})
-- {LOCATION}
+- johndoe@gmail.com
+- 123-456-5678
+- siddharthduggal.com
 
 </div>
 
@@ -44,63 +45,59 @@ const ResumeGenerator = () => {
 
 
 
-### Software Engineer, TikTok <span class="spacer"></span> Jul 2021 &mdash; Present
+### Playground Creator, FunWorld <span class="spacer"></span> Jul 2005 &mdash; Dec 2018
 
-You can include a blurb here explaining a bit about what you worked
+- Creating a cool new slide for the play area
+- Developing an interactive game that kids love to play
+- Launching a bouncy castle that was a hit with children and parents alike, attracting over 50,000 visitors in its first week
+- Sharing my knowledge with other Playground Creators and helping them improve their skills in designing and building exciting features for our visitors.
 
-- Built out some feature on the For You Page
-- Worked on a feature related to User Profiles
-- Launched a feature that grew to 50M users in the first week
-- Mentored peer engineers on front-end development and best practices
 
-Technologies: React, Preact, Javascript, TypeScript, styled-components, Storybook, CSS, Sass, Jest
 
-### Software Engineer, Spotify <span class="spacer"></span> Feb 2019 &mdash; Jun 2021
+### Music Experience Creator, BeatMaster <span class="spacer"></span> Feb 2019 &mdash; Jun 2021
 
-- Worked on the front-end experience for the Year-In-Review feature
-- Implemented a backend API for Playlist Radio
-- Built the ML model for Discover Weekly playlists
+- Crafting a delightful front-end user interface for our Year-In-Review feature, allowing users to reflect on their musical journey over the past year.
+- Developing a powerful backend API for Playlist Radio that connects listeners with an endless stream of personalized music based on their preferences.
+- Designing and implementing a sophisticated machine learning model to curate the perfect Discover Weekly playlists, helping our users discover new and exciting music every week.
 
-Technologies: React, NextJS, Javascript, styled-components, Golang, Docker, AWS, Chrome Extensions
 
-### Software Engineer, Airbnb <span class="spacer"></span> Sept 2018 &mdash; Feb 2019
 
-- Worked on a feature on the Hosts dashboard
 
-<!-- Older resume bits can be commented out so that you can keep the info without deleting it -->
 
-<!-- ### <span>Software Engineering Intern, Google</span> <span>Mar 2017 &mdash; Sept 2017</span>
-
-### <span>Software Engineering Intern, Curalate</span> <span>June 2016 &mdash; Sept 2016</span> -->
 
 ## Education
 
-### University Name, Major, Bachelors of Science <span class="spacer"></span> 2014 &mdash; 2018
+### University of Markdown, CS Major <span class="spacer"></span> 2014 &mdash; 2018
 
-- Include GPA if you like
-- Teacher Assistant for 1 year (Intro to Programming and Client Side Web Development)
-- Resident Advisor for 2 years
+- 4.0 GPA
+- Dean's List
+- Graduated with Honors
 
 ## Current Projects
 
-### Tech Optimum
 
-- B
+- Natureael
+  - Developed a mobile app that helps users track their water intake and reminds them to stay hydrated throughout the day.
+- UltimateChatBot
+  - Developed a chatbot for a customer service department, reducing response time and improving customer satisfaction.
 
 ## Skills
 
-- Code: React + hooks, NextJS, Javascript, TypeScript, NodeJS, CSS, styled-components, Golang
-- Tools: Docker, Redis, SQL, AWS, Puppeteer, Storybook, Jest, Shell, Tailwind
+- Programming languages (Java, Python, C++, JavaScript)
+- Web development (HTML, CSS, JavaScript)
+- Database management (MongoDB, SQL, NoSQL)
+- Cloud computing (AWS, Azure, Google Cloud)
+- Languages (English, Spanish, French)
+
+
 
 ## Achievements
 
-#### Best Undergrad Research Project <span class="spacer"></span> 2018
-
-#### Eagle Scout <span class="spacer"></span> 2012
-
+- Employee of the Year for outstanding performance and contributions to the company's success.
+- Excellence in Customer Service Award for consistently providing exceptional service and support to customers.
+- Innovator of the Year for developing and implementing a groundbreaking new technology.
+- Rising Star Award for demonstrating exceptional potential and achievements early in one's career.
 </div>
-
-
 <div style="color: white;">
 ##### Hello User! Welcome to Resume's resume maker. This text is needed to function. Please do not remove this text, otherwise, it will not render the PDF correctly. Thank you for understanding! Enjoy using our Resume Maker!
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -125,6 +122,7 @@ body {
 /* ordering of content */
 h1 {
     order: 0;
+    color: #0077be !important;
 }
 
 .headerInfo {
@@ -156,6 +154,7 @@ h2 {
     text-transform: uppercase;
     font-size: 16px;
     padding: 0;
+    color: #0077be !important;
 }
 
 h3 {
@@ -249,22 +248,23 @@ ul {
       // const pdf = new jsPDF();
       //const pdfWidth = pdf.internal.pageSize.getWidth();
       // const pdfHeight = pdf.internal.pageSize.getHeight();
-    }); 
-    
-  
-    
+    });
   };
 
   return (
     <>
       <Box bgColor="brand.600">
         <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
-        <Flex margin={"2rem 5rem"} py="5rem">
+        <Box mb="-2.5rem !important" mt="2rem !important" textAlign={"center"} margin="auto">
+  <Text color="brand.900">(Check out this <Link isExternal href="https://www.markdownguide.org/cheat-sheet/" >Markdown Cheat Sheet</Link> for cool tips and tricks!)</Text>
+</Box>
+
+        <Flex margin={"0rem 5rem"} py="5rem">
           <Flex maxW="800px" direction="column">
             <Button
               onClick={handleSaveAsPDF}
               px="60px"
-              mt="1rem"
+             
               _hover={{
                 backgroundColor: "brand.500",
               }}
@@ -301,18 +301,18 @@ ul {
               </TabPanels>
             </Tabs>
           </Flex>
-          <Spacer/>
-         <chakra.div width={"700px"} height={""}>
-          <div
-            className="previewBox testingBox"
-            ref={previewRef}
-            dangerouslySetInnerHTML={getPreviewStyle()}
-          />
-          <div
-            className="previewBox"
-            ref={previewRef}
-            dangerouslySetInnerHTML={{ __html: preview }}
-          ></div>
+          <Spacer />
+          <chakra.div width={"700px"} height={""}>
+            <div
+              className="previewBox testingBox"
+              ref={previewRef}
+              dangerouslySetInnerHTML={getPreviewStyle()}
+            />
+            <div
+              className="previewBox"
+              ref={previewRef}
+              dangerouslySetInnerHTML={{ __html: preview }}
+            ></div>
           </chakra.div>
         </Flex>
       </Box>

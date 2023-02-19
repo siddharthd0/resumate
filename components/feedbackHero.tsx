@@ -5,6 +5,7 @@ import {
   Icon,
   chakra,
   Text,
+  Link,
   Image,
 } from "@chakra-ui/react";
 
@@ -149,6 +150,9 @@ export default function FeedbackHero() {
                   fontFamily="fantasy"
                 >
                   <Box rounded="full" shadow="md">
+                    <Link _hover={{
+                      textDecoration: "none",
+                    }} href="#importantContainer">
                     <chakra.a
                       className="gs"
                       w="full"
@@ -173,6 +177,7 @@ export default function FeedbackHero() {
                     >
                       Get started
                     </chakra.a>
+                    </Link>
                   </Box>
                 </Box>
               </Box>
