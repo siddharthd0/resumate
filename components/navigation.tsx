@@ -25,7 +25,7 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
       initial="hidden"
       animate="visible"
       alignItems={"center !important"}
-      px="30px"
+      px="110px"
       py="14px"
       color="brand.900"
       backgroundColor={"brand.700"}
@@ -34,9 +34,6 @@ const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
       wrap="wrap"
     >
       <Box display={"flex"} alignItems={"center !important"}>
-        <Heading className="logo" fontSize="2xl">
-          Resumate.
-        </Heading>
       </Box>
       <Spacer />
       <Box display={{ base: "block", md: "none" }}>

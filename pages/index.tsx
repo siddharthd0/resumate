@@ -48,12 +48,21 @@ const Home: NextPage = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
+                transition={{ delay: 2 }}
+              >
+                <Box display={"flex"} justifyContent={"center"}>
+                  <Image height="225px" maxWidth="600px" src="/Resu2.png" alt="logo" />
+                </Box>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
               >
                 <Heading
                   mb="16px"
                   as="h1"
-                  fontSize="6xl"
+                  fontSize="8xl"
                   color="brand.900"
                   textAlign="center"
                   textShadow="1px 1px 2px rgba(0,0,0,0.3)"

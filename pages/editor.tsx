@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { marked } from "marked";
+import DOMPurify from "dompurify";
+import MarkdownIt from "markdown-it";
 import {
   Flex,
   Box,
@@ -33,14 +34,15 @@ const ResumeGenerator = () => {
   const [preview, setPreview] = useState("");
   const previewRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setPreview(marked(markdown));
-  }, [markdown]);
+  const md = new MarkdownIt();
 
-  const handleMarkdownChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setMarkdown(event.target.value);
+  // useEffect(() => {
+  //   setPreview(marked(markdown));
+  // }, [markdown]);
+
+  const handleMarkdownChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const html = md.render(event.target.value);
+    setMarkdown(html);
   };
 
   const handleCssChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -53,9 +55,12 @@ const ResumeGenerator = () => {
 
   const handleSaveAsPDF = () => {
     if (!previewRef.current) return;
-
+  
     const content = previewRef.current.innerHTML;
 
+    // Sanitize the HTML content using DOMPurify
+    // const sanitizedContent = DOMPurify.sanitize(content);
+  
     // Define styles for the PDF document
     const styles = StyleSheet.create({
       page: {
@@ -71,26 +76,32 @@ const ResumeGenerator = () => {
         color: "black",
       },
     });
-
+  
     // Define the document structure
     const MyDocument = () => (
       <Document>
         <Page size="A4" style={styles.page}>
           <View style={styles.section}>
-            <Text style={styles.text}>{content}</Text>
+          <Text style={styles.text}>{content}</Text>
           </View>
         </Page>
       </Document>
     );
-
+  
     // Generate the PDF from the document
     pdf(<MyDocument />)
       .toBlob()
       .then((pdfBlob) => {
         const pdfUrl = URL.createObjectURL(pdfBlob);
-        window.open(pdfUrl);
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = "preview.pdf"; // type assertion
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       });
   };
+  
 
   return (
     <>

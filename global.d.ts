@@ -3,3 +3,4 @@ declare namespace JSX {
       style: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
     }
   }
+
