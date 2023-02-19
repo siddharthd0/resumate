@@ -14,7 +14,7 @@ import {
   chakra,
   shouldForwardProp
 } from "@chakra-ui/react";
-import Navigation from "../components/navigation";
+import Navigation from "../components/homenav";
 import Footer from "../components/footer";
 import React from "react";
 import { motion } from "framer-motion";
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
      
         <Box  bgColor="brand.600" color="brand.600" height={"100vh"} display={"flex"} justifyContent={"center"}>
           <Box
-            pt="52"
+            pt="100px"
             as={motion.section}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
                 transition={{ delay: 2 }}
               >
                 <Box display={"flex"} justifyContent={"center"}>
-                  <Image height="225px" maxWidth="600px" src="/Resu2.png" alt="logo" />
+                  <Image height="130px" maxWidth="600px" src="/Resu2.png" alt="logo" />
                 </Box>
               </motion.div>
               <motion.div

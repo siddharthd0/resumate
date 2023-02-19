@@ -103,7 +103,6 @@ const DropZone = () => {
         backgroundColor={"brand.700"}
         margin="auto"
         maxW={"1000px"}
-        minH="50vh"
       >
         <Heading color="brand.500" fontSize={"lg"}>
           Get started
@@ -137,6 +136,7 @@ const DropZone = () => {
           <Spacer />
 
           <Input
+            color="white"
             py="1.5rem"
             maxW={"300px"}
             ref={usernameRef}
@@ -146,15 +146,17 @@ const DropZone = () => {
           <Spacer />
 
           <Button
-            bgColor={"#fff3"}
+            py="25px"
+            bgColor={"brand.600 !important"}
             px="20px"
             color="white"
             fontWeight={"300"}
-            backgroundColor={"brand.700"}
             borderRadius="7px"
             onClick={uploadResume}
             rightIcon={<Icon as={BsArrowRightCircleFill} w={6} h={6} />}
-          ></Button>
+          >
+            Go
+          </Button>
         </Flex>
       </chakra.div>
     </>

@@ -17,8 +17,21 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ onOpen, onClose, isOpen }) => {
+  const navVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1.4, delay: 2 } },
+  };
+
+  const menuItemVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
   return (
     <Flex
+      as={motion.nav}
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
       alignItems={"center !important"}
       px="110px"
       py="14px"

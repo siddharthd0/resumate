@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import html2canvas from "html2canvas";
-import "jspdf-autotable";
+// import "jspdf-autotable";
 import jsPDF from "jspdf";
 
 export default function ResumeGenerator() {
@@ -23,43 +23,48 @@ export default function ResumeGenerator() {
   }, [name, email, phone, education, experience, skills]);
 
   const generatePdf = () => {
-    const element = document.getElementById('resume-preview');
-    const opt = {
-      margin: [0.5, 0.5, 0.5, 0.5],
-      filename: `${name}-resume.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-      include: [
-        './generate.css', // path to your separate CSS file
-      ],
-    };
-    html2pdf().set(opt).from(element).save();
+    // const element = document.getElementById('resume-preview');
+
+    const doc = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+    });
+
+    // Add the name field separately with custom styling
+    doc.setFontSize(20);
+    doc.text(name, 15, 20);
+    doc.setFontSize(14);
+    doc.setTextColor(100, 100, 100);
+    doc.text(email, 15, 28);
+    doc.text(phone, 15, 34);
+    doc.setFontSize(16);
+    doc.setTextColor(0, 0, 0);
+    doc.text("Education", 15, 50);
+    doc.setFontSize(14);
+    doc.setTextColor(100, 100, 100);
+    doc.text(education, 15, 58);
+    doc.setFontSize(16);
+    doc.setTextColor(0, 0, 0);
+    doc.text("Experience", 15, 80);
+    doc.setFontSize(14);
+    doc.setTextColor(100, 100, 100);
+    doc.text(experience, 15, 88);
+    doc.setFontSize(16);
+    doc.setTextColor(0, 0, 0);
+    doc.text("Skills", 15, 110);
+    doc.setFontSize(14);
+    doc.setTextColor(100, 100, 100);
+    doc.text(skills, 15, 118);
+
+    const imgData = previewUrl;
+    doc.addImage(imgData, "PNG", 130, 20, 60, 80);
+    doc.save(`${name}-resume.pdf`);
   };
 
   const downloadPdf = () => {
     // Create a new jsPDF object
-    const doc = new jsPDF();
-
-    // Add the user's name and contact information to the PDF
-    doc.text(name, 10, 10);
-    doc.text(email, 10, 20);
-    doc.text(phone, 10, 30);
-
-    // Add the user's education section to the PDF
-    doc.text("Education:", 10, 50);
-    doc.text(education, 10, 60);
-
-    // Add the user's experience section to the PDF
-    doc.text("Experience:", 10, 80);
-    doc.text(experience, 10, 90);
-
-    // Add the user's skills section to the PDF
-    doc.text("Skills:", 10, 110);
-    doc.text(skills, 10, 120);
-
-    // Save the PDF with the user's name as the filename
-    doc.save(`${name}_resume.pdf`);
+    generatePdf();
   };
 
   return (
