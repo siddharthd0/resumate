@@ -73,10 +73,13 @@ a {
   height: 1684px;
 
 }
+.testingBox {
+  display: none;
+}
 
 .editorInput {
-  width: 400px;
-  height: 1000px;
+  width: 500px;
+  height: 1500px;
   border: none;
   outline: none;
   font-size: 16px;

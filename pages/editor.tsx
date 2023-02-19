@@ -10,6 +10,7 @@ import {
   Tab,
   TabPanel,
   Input,
+  Spacer,
   Button,
 } from "@chakra-ui/react";
 import Navigation from "../components/navigation";
@@ -18,9 +19,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const ResumeGenerator = () => {
-  const [markdown, setMarkdown] = useState(`
-  
-<div class="body-container"> 
+  const [markdown, setMarkdown] = useState(`<div class="body-container"> 
 
 # {NAME}
 
@@ -84,11 +83,9 @@ Technologies: React, NextJS, Javascript, styled-components, Golang, Docker, AWS,
 
 ## Current Projects
 
-### resume.lol
+### Tech Optimum
 
-- Built a resume editor which converts Markdown and CSS into a beautifully rendered resume PDF
-- Implemented a WYSIWYG multi-page live preview of the resume from scratch
-- Exported this resume from the website :)
+- B
 
 ## Skills
 
@@ -97,9 +94,9 @@ Technologies: React, NextJS, Javascript, styled-components, Golang, Docker, AWS,
 
 ## Achievements
 
-### Best Undergrad Research Project <span class="spacer"></span> 2018
+#### Best Undergrad Research Project <span class="spacer"></span> 2018
 
-### Eagle Scout <span class="spacer"></span> 2012
+#### Eagle Scout <span class="spacer"></span> 2012
 
 </div>
 
@@ -112,11 +109,7 @@ Technologies: React, NextJS, Javascript, styled-components, Golang, Docker, AWS,
   
   `);
   const [css, setCss] = useState(`
-  
-  /* You can poke around this CSS if you want to customize your formatting / styling further */
-/* You can even import custom fonts! */
 
-/* fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap');
 
 /* meta */
@@ -169,6 +162,12 @@ h3 {
     display: flex;
     font-size: 15px;
     padding: 0;
+    justify-content: space-between;
+}
+h4 {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
     justify-content: space-between;
 }
 
@@ -250,15 +249,18 @@ ul {
       // const pdf = new jsPDF();
       //const pdfWidth = pdf.internal.pageSize.getWidth();
       // const pdfHeight = pdf.internal.pageSize.getHeight();
-    });
+    }); 
+    
+  
+    
   };
 
   return (
     <>
       <Box bgColor="brand.600">
         <Navigation onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
-        <Flex margin={"0 auto"} py="5rem">
-          <Flex direction="column">
+        <Flex margin={"2rem 5rem"} py="5rem">
+          <Flex maxW="800px" direction="column">
             <Button
               onClick={handleSaveAsPDF}
               px="60px"
@@ -272,7 +274,7 @@ ul {
             >
               Save as PDF
             </Button>
-            <Tabs isFitted variant="enclosed">
+            <Tabs mt="16px" isFitted variant="enclosed">
               <TabList>
                 <Tab color="brand.900">Markdown Editor</Tab>
                 <Tab color="brand.900">CSS Editor (Styling)</Tab>
@@ -299,9 +301,10 @@ ul {
               </TabPanels>
             </Tabs>
           </Flex>
-
+          <Spacer/>
+         <chakra.div width={"700px"} height={""}>
           <div
-            className="previewBox"
+            className="previewBox testingBox"
             ref={previewRef}
             dangerouslySetInnerHTML={getPreviewStyle()}
           />
@@ -310,6 +313,7 @@ ul {
             ref={previewRef}
             dangerouslySetInnerHTML={{ __html: preview }}
           ></div>
+          </chakra.div>
         </Flex>
       </Box>
       <Footer />
