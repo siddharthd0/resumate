@@ -148,6 +148,7 @@ const DropZone = () => {
           <Button
             py="25px"
             bgColor={"brand.600 !important"}
+            _hover={{ color: "#08f26e" }}
             px="20px"
             color="white"
             fontWeight={"300"}
@@ -155,7 +156,7 @@ const DropZone = () => {
             onClick={uploadResume}
             rightIcon={<Icon as={BsArrowRightCircleFill} w={6} h={6} />}
           >
-            Go
+            Upload
           </Button>
         </Flex>
       </chakra.div>

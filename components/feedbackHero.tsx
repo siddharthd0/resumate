@@ -150,17 +150,11 @@ export default function feedbackHero() {
                 >
                   <Box rounded="full" shadow="md">
                     <chakra.a
-                   
+                      className="gs"
                       w="full"
                       display="flex"
                       alignItems="center"
                       justifyContent="center"
-                      border="solid 1px transparent"
-                      fontSize={{
-                        base: "md",
-                        md: "lg",
-                      }}
-                      rounded="md"
                       color="white"
                       bg="brand.600"
                       _hover={{

@@ -57,8 +57,8 @@ export default function ResumeGenerator() {
     doc.setTextColor(100, 100, 100);
     doc.text(skills, 15, 118);
 
-    const imgData = previewUrl;
-    doc.addImage(imgData, "PNG", 130, 20, 60, 80);
+    // const imgData = previewUrl;
+    // doc.addImage(imgData, "PNG", 130, 20, 60, 80);
     doc.save(`${name}-resume.pdf`);
   };
 
@@ -74,7 +74,7 @@ export default function ResumeGenerator() {
         <p>Email: {email}</p>
         <p>Phone: {phone}</p>
         <h2>Education</h2>
-        <p>{education}</p>
+        <p>{education}</p> 
         <h2>Experience</h2>
         <p>{experience}</p>
         <h2>Skills</h2>
